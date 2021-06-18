@@ -27,12 +27,10 @@ export async function getStaticProps({ ...ctx }) {
   const { newsName } = ctx.params;
 
   const content = await import(`./${newsName}.md`);
-  const config = await import(`../../siteconfig.json`);
   const data = matter(content.default);
 
   return {
     props: {
-      siteTitle: config.title,
       frontmatter: data.data,
       markdownBody: data.content,
     },
