@@ -1,8 +1,8 @@
 backend:
-  name: 'github'
-  repo: 'HonzaDudek/alzaTechFridayDemo'
-  branch: 'main'
-  base_url: 'https://cmsazuredemofunc.azurewebsites.net',
+  name: github
+  repo: HonzaDudek/alzaTechFridayDemo
+  branch: main
+  base_url: https://cmsazuredemofunc.azurewebsites.net,
 media_folder: public/img
 public_folder: public
 collections:
