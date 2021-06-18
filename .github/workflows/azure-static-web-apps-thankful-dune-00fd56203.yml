@@ -1,7 +1,5 @@
 name: Azure Static Web Apps CI/CD
 
-
-
 on:
   push:
     branches:
@@ -10,14 +8,6 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
-
-  workflow_dispatch:
-    env:
-      RESOURCE_GROUP_NAME: techFridayDemo
-      STORAGE_ACCOUNT_NAME: storageaccounttechf8439
-      OAUTH_FUNCTION_APP_NAME: techFridayDemoCMS
-      ORIGIN: https://thankful-dune-00fd56203.azurestaticapps.net/
-
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')

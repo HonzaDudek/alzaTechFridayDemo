@@ -6,10 +6,9 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=PT+Sans:300,400,700,800"
-            rel="stylesheet"
-          />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+          <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
         </Head>
         <body>
           <Main />

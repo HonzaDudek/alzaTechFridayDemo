@@ -1,32 +1,40 @@
 import Link from 'next/link';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
-
-import Layout from '../../components/layout';
+import {AppBar, Container, IconButton, Toolbar} from "@material-ui/core";
+import React from "react";
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>;
 
   return (
-      <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
-        <Link href="/">
-          <a>Back to post list</a>
-        </Link>
-        <article>
-          <h1>{frontmatter.title}</h1>
-          <p>By {frontmatter.author}</p>
-          <div>
-            <ReactMarkdown source={markdownBody} />
-          </div>
-        </article>
-      </Layout>
+      <>
+      <AppBar position={"sticky"}>
+        <Container maxWidth={'lg'} className="home">
+          <Toolbar>
+            <Link href={'/'} color={"error"}>Home</Link>
+            <Link href={'/novinky'}  color={"error"}>Novinky</Link>
+          </Toolbar>
+        </Container>
+      </AppBar>
+        <Container maxWidth={'lg'} className="home">
+          <article>
+            <h1>{frontmatter.title}</h1>
+            <p>By {frontmatter.author}</p>
+            <div>
+              <ReactMarkdown source={markdownBody} />
+            </div>
+          </article>
+        </Container>
+
+</>
   );
 }
 
 export async function getStaticProps({ ...ctx }) {
-  const { newsName } = ctx.params;
+  const { path } = ctx.params;
 
-  const content = await import(`./${newsName}.md`);
+  const content = await import(`./${path}.md`);
   const data = matter(content.default);
 
   return {

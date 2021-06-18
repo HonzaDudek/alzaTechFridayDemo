@@ -1,18 +1,30 @@
-import SmallCard from '../components/SmallCard';
-import { projectIcons } from '../components/Icons';
+import React from 'react';
+import {AppBar, Button, Container, IconButton, Link, Toolbar, Typography, useTheme} from "@material-ui/core";
 
-import { projects } from '../utils/projectsData';
+function MenuIcon() {
+  return null;
+}
 
-const Home = () => (
-  <div className="home">
-    <h1>What Can I Deploy to Static Apps?</h1>
-    <div className="card-grid">
-      {projects.map((project) => {
-        const Icon = projectIcons[project.id];
-        return <SmallCard key={project.id} Icon={Icon} title={project.name} slug={project.slug} />;
-      })}
-    </div>
-  </div>
-);
+const Home = () => {
 
+  const theme = useTheme();
+  return (
+      <>
+        <AppBar position={"sticky"}>
+          <Container maxWidth={'lg'} className="home">
+            <Toolbar>
+              <Link href={'/'} color={"error"}>Home</Link>
+              <Link href={'/novinky'}  color={"error"}>Novinky</Link>
+            </Toolbar>
+          </Container>
+        </AppBar>
+        <Container maxWidth={'lg'} className="home">
+          <Typography variant={"h1"}>Alza Tech Friday demo</Typography>
+          <Typography variant={"body1"}>Demo site for Alza Tech Friday</Typography>
+        </Container>
+      </>
+
+  );
+
+}
 export default Home;
